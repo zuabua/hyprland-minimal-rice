@@ -1,0 +1,56 @@
+{
+    // General Settings
+
+    // Position TOP
+    "layer": "top",
+    "margin-bottom": 0,
+
+    "margin-left": 0,
+    "margin-right": 0,    
+    "spacing": 0,
+
+    "include": [
+        "~/.config/waybar/modules.json"
+    ],
+
+    // Modules Left
+    "modules-left": [
+    ],
+
+    // Modules Center
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    // Modules Right    
+    "modules-right": [
+        "pulseaudio",
+        "bluetooth",
+        "battery", 
+        "network",
+        "group/hardware",
+        "tray",
+        "custom/exit",
+        "clock"
+    ],
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}   {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+        "headphone": " ",
+        "hands-free": " ",
+        "headset": " ",
+        "phone": " ",
+        "portable": " ",
+        "car": " ",
+        "default": [" ", " ", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+}
+
