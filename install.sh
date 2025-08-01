@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This installation script is only functional for arch intalls, as it uses pacman
+
 # Ensure the script is running from the same directory as the packages.lst and yay.lst files
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
 PACKAGE_LIST="$SCRIPT_DIR/packages.lst"
@@ -23,6 +25,9 @@ if [[ ! -d "$THEME_DIR" ]]; then
     echo "Error: The 'themes/minimal' directory does not exist."
     exit 1
 fi
+
+echo "updating pacman.."
+sudo pacman -Syu
 
 # Read the package list and install each package using pacman
 echo "Installing packages from $PACKAGE_LIST..."
@@ -89,6 +94,8 @@ if [[ -d "$THEME_DIR/.config" ]]; then
 else
     echo "No .config directory found in $THEME_DIR to move."
 fi
+
+sudo systemctl enable bluetooth.service
 
 echo "Installation and file replacement complete!"
 

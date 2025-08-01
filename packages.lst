@@ -1,4 +1,5 @@
 git
+jq
 hyprland
 kitty
 firefox
@@ -28,3 +29,9 @@ nautilus
 matugen
 imagemagick
 brightnessctl
+bluez
+bluez-utils
+blueman
+swayn
+pavucontrol
+hyprlock
