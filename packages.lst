@@ -17,6 +17,7 @@ xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 qt5-wayland
 qt6-wayland
+swww
 gtk4
 qt6ct
 nwg-look
@@ -32,6 +33,6 @@ brightnessctl
 bluez
 bluez-utils
 blueman
-swayn
+swaync
 pavucontrol
 hyprlock
