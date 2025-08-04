@@ -63,16 +63,41 @@ if [[ -n "$YAY_LIST" ]]; then
     done < "$YAY_LIST"
 fi
 
-# Handle the .bashrc and .config files/folders
-echo "Moving and replacing .bashrc and .config from $THEME_DIR..."
 
-# Move .bashrc (replace if it exists)
+echo "Installing oh my zsh"
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "Installing powerlevel10k"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
+# Handle the .gtkrc-2.0, .zshrc, p10k and .config files/folders
+echo "Moving and replacing .gtkrc-2.0, .zshrc and .config from $THEME_DIR..."
+
+# Move .gtkrc-2.0 (replace if it exists)
 if [[ -f "$THEME_DIR/.gtkrc-2.0" ]]; then
     echo "Replacing .gtkrc in home directory..."
-    mv -f "$THEME_DIR/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
+    cp -f "$THEME_DIR/.gtkrc-2.0" "$HOME/.gtkrc-2.0"
 else
     echo "No .gtkrc-2.0 found in $THEME_DIR to move."
 fi
+
+# Move .zshrc (replace if it exists)
+if [[ -f "$THEME_DIR/.zshrc" ]]; then
+    echo "Replacing .zshrc in home directory..."
+    cp -f "$THEME_DIR/.zshrc" "$HOME/.zshrc"
+else
+    echo "No .zshrc found in $THEME_DIR to move."
+fi
+
+# Move powerlevel10k (replace if it exists)
+if [[ -f "$THEME_DIR/.p10k.zsh" ]]; then
+    echo "Replacing .zshrc in home directory..."
+    cp -f "$THEME_DIR/.p10k.zsh" "$HOME/.p10k.zsh"
+else
+    echo "No .p10k.zsh found in $THEME_DIR to move."
+fi
+
 
 if [[ -d "$THEME_DIR/.config" ]]; then
     echo "Checking .config directory in home directory..."
@@ -85,7 +110,7 @@ if [[ -d "$THEME_DIR/.config" ]]; then
         # Check if the file exists in the user's .config directory
         if [[ -f "$HOME/.config/$file_name" ]]; then
             echo "Replacing $file_name in .config..."
-            mv -f "$config_file" "$HOME/.config/$file_name"
+            cp -f "$config_file" "$HOME/.config/$file_name"
         else
             echo "Adding new $file_name to .config..."
             cp -r "$config_file" "$HOME/.config/"
@@ -95,7 +120,12 @@ else
     echo "No .config directory found in $THEME_DIR to move."
 fi
 
+echo "Enabling bluetooth services..."
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
+
+echo "Removing yay clone..."
+rm -rf yay
+
 echo "Installation and file replacement complete!"
 

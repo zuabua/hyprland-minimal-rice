@@ -2,6 +2,7 @@ git
 jq
 hyprland
 kitty
+zsh
 firefox
 vim
 noto-fonts
@@ -13,6 +14,7 @@ ttf-fira-sans
 ttf-fira-code
 ttf-firacode-nerd
 ttf-dejavu
+otf-geist-mono-nerd
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 qt5-wayland
