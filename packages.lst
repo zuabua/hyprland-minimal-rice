@@ -18,6 +18,7 @@ xdg-desktop-portal-gtk
 qt5-wayland
 qt6-wayland
 swww
+network-manager-applet
 gtk4
 qt6ct
 nwg-look
@@ -37,3 +38,4 @@ swaync
 pavucontrol
 hyprlock
 python-pywalfox
+breeze

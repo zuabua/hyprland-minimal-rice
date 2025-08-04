@@ -96,6 +96,6 @@ else
 fi
 
 sudo systemctl enable bluetooth.service
-
+sudo systemctl start bluetooth.service
 echo "Installation and file replacement complete!"
 
